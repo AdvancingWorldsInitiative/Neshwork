@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include partials/head.ejs %>
+</head>
+<body>
+<% include partials/topbar.ejs %>
+
+<% if (error){ %>
+	<p class='error'>Wrong username or password</p>
+<% } %>
+
+<form id="loginform" action="/reg_process" method="post"> 
+<p>
+<label for="name">Username</label><br>
+<input class="textbox" type="text" name="name"> 
+</p>
+<p>
+<label for="pass">Password</label><br>
+<input class="textbox" type="password" name="pass" id="password"> 
+</p>
+<!-- Remember Me: <input type="checkbox" name="rememberme" value="1"<br>-->
+<input class="button" type="submit" value="Login">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include partials/head.ejs %>
+</head>
+<body>
+<% include partials/topbar.ejs %>
+
+<% if (error != []){ %>
+	<% for (var i=0;i<error.length;i++){ %>
+		<p class='error'><%= error[i] %></p>
+	<% } %>
+<% } %>
+
+<form id="signupform" method="post" name="registration_form" action="/reg_process">
+<p>
+<label for="name">Username</label><br>
+<input class="textbox" type="text" name="name">
+</p>
+<p>
+<label for="pass">Password</label><br>
+<input class="textbox" type="password" name="pass" id="password">
+</p>
+<p>
+<label for="cnfpass">Confirm Password</label><br>
+<input class="textbox" type="password" name="cnfpass" id="cnfpassword">
+</p>
+<input class="button" type="submit" value="Sign Up"/>
+</form>
+
+
+</body>
+</html>
