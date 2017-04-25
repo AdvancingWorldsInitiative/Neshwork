@@ -21,7 +21,7 @@ app.get('/reg_success', routes.reg_success);
 
 
 var reg_process = require('./includes/reg_process');
-app.post('/reg_process', function(req, res){
+app.post('/register', function(req, res){
 	reg_process.register(req, res);
 })
 
