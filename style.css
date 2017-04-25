@@ -1,0 +1,123 @@
+body
+{
+  margin: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #FFFFFF;
+  font-family: Arial, sans-serif;
+  font-size: 250%;
+}
+
+a
+{
+  text-decoration: none;
+}
+
+.button
+{
+  font-size: 125%;
+}
+
+.timestamp
+{
+  font-size: 50%;
+  color: #666666;
+}
+
+.error
+{
+  color: #DD0000;
+  font-weight: bold;
+  font-size: 90%;
+  text-align: center;
+}
+
+.textbox
+{
+  font-size: 75%;
+  border-width: 5px;
+}
+
+#header
+{
+  height: 110px;
+}
+
+#header img
+{
+  height: 100px;
+}
+
+#logo
+{
+  float: left;
+}
+
+.img.center
+{
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.topright
+{
+  float: right;
+}
+
+.message
+{
+  border-style: solid;
+  border-color: #AAAAAA;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.message a
+{
+  color: #666666;
+  font-weight: bold;
+}
+
+#posthead
+{
+  color: #666666;
+  font-weight: bold;
+}
+
+#postform textarea
+{
+  border-width: 3px;
+  border-color: #AAAAAA;
+  border-radius: 5px;
+}
+
+#loginform
+{
+  text-align: center;
+}
+
+#signupform
+{
+  text-align: center;
+}
+
+#signupform label
+{
+  text-align: left;
+}
+
+form label
+{
+  color: #666666;
+  font-weight: bold;
+}
+
+form button
+{
+  color: #FFFFFF;
+  background-color: #888888;
+  border-width: 0px;
+  border-radius: 10px;
+  font-size: 100%;
+}
