@@ -20,6 +20,7 @@ app.get('/', routes.home);
 app.get('/login', routes.login);
 app.get('/register', routes.register);
 app.get('/logout', routes.logout);
+app.get('/people/:person?', routes.people);
 
 
 
