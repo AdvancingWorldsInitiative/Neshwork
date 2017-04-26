@@ -19,6 +19,11 @@ exports.login = function (req,res){
 				}
 			}
 		}
+		res.render('login', {
+		title: 'Neshwork - Login',
+		logged_in: false,
+		error: ['Username or password is incorrect']
+	})
 	}
 }
 
