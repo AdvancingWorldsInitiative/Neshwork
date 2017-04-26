@@ -7,6 +7,8 @@ var app = express();
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 
+var func = require('./includes/functions')
+
 var path = require('path');
 app.use(express.static(path.join(__dirname, 'includes')))
 
@@ -17,12 +19,17 @@ var routes = require('./routes');
 app.get('/', routes.home);
 app.get('/login', routes.login);
 app.get('/register', routes.register);
-app.get('/reg_success', routes.reg_success);
+app.get('/logout', routes.logout);
+
 
 
 var reg_process = require('./includes/reg_process');
 app.post('/register', function(req, res){
 	reg_process.register(req, res);
+})
+
+app.post('/login', function(req, res){
+	func.login(req, res)
 })
 
 

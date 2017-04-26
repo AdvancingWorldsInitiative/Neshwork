@@ -1,7 +1,20 @@
+var logged_in
+
+function verifylogin(req){
+	var name = req.cookies.name;
+	var login_string = req.cookies.login_string;
+	if(req.cookies.name == null || req.cookies.name == ''){
+		logged_in = false
+	} else {
+		logged_in = true
+	}
+}
+
 exports.home = function(req, res){
+	verifylogin(req)
 	res.render('home', {
 		title: 'Neshwork',
-		logged_in: false
+		logged_in: logged_in
 	});
 };
 
@@ -21,8 +34,11 @@ exports.register = function(req, res){
 	})
 }
 
-exports.reg_success = function(req, res){
-	res.send('<h2>Registration completed successfully!</h2><p>You have been automatically logged in and will be redirected to the home page in a moment..</p>')
+exports.logout = function(req,res){
+	res.cookie('uid', '')
+	res.cookie('login_string', '')
+	res.cookie('name', '')
+	res.redirect('/')
 }
 
 exports.notFound = function(req, res){
