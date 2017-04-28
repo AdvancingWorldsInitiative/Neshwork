@@ -33,6 +33,10 @@ app.post('/login', function(req, res){
 	func.login(req, res)
 })
 
+app.post('/', function(req,res){
+	func.send_msg(req, res)
+}
+
 
 
 app.get('*', routes.notFound);

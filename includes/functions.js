@@ -49,3 +49,19 @@ exports.getstats = function (person, callback){
 		}
 	}
 }
+
+exports.send_msg = function(req,res){
+	var msg = req.body.msg;
+	var now = Math.floor(Date.now()/1000)
+
+	verifylogin(req,function(logged_in,name){
+		if(logged_in){
+			db.query('INSERT INTO msgs(id,name,msg,timestamp) VALUES(NULL,"'+name+'","'+msg+'","'+now+'")',function(){
+				return true
+			})
+		}else{
+			db.query('INSERT INTO msgs(id,name,msg,timestamp) VALUES(NULL,"Anonymous","'+msg+'","'+now+'")',function(){
+				return true
+		}
+	})
+}
