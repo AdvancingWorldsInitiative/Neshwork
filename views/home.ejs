@@ -4,6 +4,20 @@
 
 <% include partials/head.ejs %>
 
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+  $(function () {
+    var socket = io();
+    $('form').submit(function(){
+      socket.emit('msg');
+    });
+    socket.on('msg',function(){
+    	console.log('wew')
+    	location.reload()
+    })
+  });
+</script>
+
 </head>
 <body>
 
@@ -15,4 +29,8 @@
   <button type="submit">Post</button>
 </form>
 
-<div id="msgs"></div>
+<div id="msgs"><% for(var i=0;i<msgs.length;i++){ %>
+			<p class='message'><a href='people/<%= msgs[i].name %>'><%= msgs[i].name %></a>
+			<br><%= msgs[i].msg %></p>
+
+		<% } %></div>

@@ -7,6 +7,9 @@ var app = express();
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 var func = require('./includes/functions')
 
 var path = require('path');
@@ -35,12 +38,19 @@ app.post('/login', function(req, res){
 
 app.post('/', function(req,res){
 	func.send_msg(req, res)
-}
+})
 
 
 
 app.get('*', routes.notFound);
 
-app.listen(3000, function(){
-	console.log('App running on port 3000')
+io.on('connection', function(socket){
+	socket.on('msg',function(){
+		console.log('wew')
+		io.emit('msg')
+	})
+})
+
+http.listen(3000, function(){
+	console.log('App running on port 3000');
 })

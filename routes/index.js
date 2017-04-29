@@ -3,11 +3,14 @@ var func = require('../includes/functions')
 exports.home = function(req, res){
 	func.verifylogin(req,callback)
 	function callback(logged_in,name) {
-		res.render('home', {
-			title: 'Neshwork',
-			logged_in: logged_in,
-			name: name
-		});
+		func.get_msg(function(msgs){
+			res.render('home', {
+				title: 'Neshwork',
+				logged_in: logged_in,
+				name: name,
+				msgs: msgs
+			});
+		})
 	}
 };
 

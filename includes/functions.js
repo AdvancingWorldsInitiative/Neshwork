@@ -1,4 +1,5 @@
 var db = require('./db_connect');
+var func = require('./functions')
 var passwordHash = require('password-hash');
 
 exports.login = function (req,res){
@@ -52,16 +53,29 @@ exports.getstats = function (person, callback){
 
 exports.send_msg = function(req,res){
 	var msg = req.body.msg;
-	var now = Math.floor(Date.now()/1000)
+	var now = Math.floor(Date.now()/1000);
 
-	verifylogin(req,function(logged_in,name){
+	func.verifylogin(req,function(logged_in,name){
 		if(logged_in){
 			db.query('INSERT INTO msgs(id,name,msg,timestamp) VALUES(NULL,"'+name+'","'+msg+'","'+now+'")',function(){
-				return true
+				res.redirect('/')
 			})
 		}else{
 			db.query('INSERT INTO msgs(id,name,msg,timestamp) VALUES(NULL,"Anonymous","'+msg+'","'+now+'")',function(){
-				return true
+				res.redirect('/')
+			})
 		}
 	})
+}
+
+exports.get_msg = function(callback){
+	var html = '';
+	var name ='';
+	var msg = '';
+	db.query('SELECT * FROM msgs ORDER BY id DESC', function(rows){
+		
+		callback(rows)
+	})
+
+	
 }
